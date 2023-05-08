@@ -8,10 +8,10 @@ export default {
   },
   props: ["photos"],
   methods: {
-    getRandomTag() {
-      const tags = ["nature", "city", "food", "music", "sports", "animals"];
-      return tags[Math.floor(Math.random() * tags.length)];
-    },
+    // getRandomTag() {
+    //   const tags = ["nature", "city", "food", "music", "sports", "animals"];
+    //   return tags[Math.floor(Math.random() * tags.length)];
+    // },
     ImageClicked(photo) {
       this.selected.push(photo);
       store.dispatch("setSelectedPhoto", photo);

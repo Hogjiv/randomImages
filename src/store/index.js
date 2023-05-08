@@ -12,12 +12,24 @@ const store = createStore({
     setSelectedPhoto(state, photo) {
       state.selectedPhotoId = photo
     },
-    favorites(state, next) {
-      state.favorites = next;
+    addToFavorites(state, next) {
+      if (state.favorites.includes(next)) {
+        alert('This picture is already in favorites')
+      } else {
+        state.favorites.push(next)
+      }
+      // localStorage.setItem('allState', JSON.stringify(state))
+    },
+    removeFromFavorites(state, photo) {
+      state.favorites = state.favorites.filter(x => x.id !== photo.id )
     },
     searchResult(state, results) {
       state.searchResult = results;
     },
+    favorites(state, results) {
+      state.favorites = results;
+    },
+
     searchString(state, xx){
       state.searchString = xx;
     }
@@ -59,6 +71,16 @@ const store = createStore({
     },
     saveCache({state}) {
       localStorage.setItem('allState', JSON.stringify(state))
+    },
+    toggleFavorites(store, photo) {
+      if (!store.state.favorites.some(x => x.id === photo.id )) {
+       store.commit('addToFavorites', photo)
+       console.log('ADD', photo)
+      } else {
+        store.commit('removeFromFavorites', photo)
+        console.log('remove', photo)
+      }
+      store.dispatch('saveCache')
     }
   },
 });

@@ -55,7 +55,7 @@ export default {
   height: 25px;
 }
 .navigation {
-  height: 150px;
+  height: 90px;
   background-color: black;
 }
 .text {
@@ -70,5 +70,14 @@ a:hover {
 }
 .font-20 {
   font-size: 20px;
+}
+.font-14 {
+  font-size: 14px;
+}
+.font-18 {
+  font-size: 18px;
+}
+.font-30 {
+  font-size: 30px;
 }
 </style>
